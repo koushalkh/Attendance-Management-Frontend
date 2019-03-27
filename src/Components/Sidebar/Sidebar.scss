@@ -1,7 +1,7 @@
 .sidebar {
     width: 20%;
-    background-color: #20232A;
-    // background-color: grey;
+    // background-color: #20232A;
+    background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -9,7 +9,8 @@
     height: 100%;
     float: left;
     position: fixed;
-    color: #fff;
+    // color: #fff;
+    color: black;
     // z-index: 1;
     top: 4em;
     left: 0;

@@ -16,8 +16,9 @@ class Subject extends Component {
     return (
       <div className="subject-container">
         <span>Subject 1</span>
-        {this.props.attendance.map(DayAttendance => (
+        {this.props.attendance.map((DayAttendance, i) => (
           <div
+            key={i}
             style={this.getStyle(DayAttendance)}
             onClick={() => this.onClick(DayAttendance)}
           >
@@ -36,8 +37,8 @@ export default class SubjectList extends Component {
     // console.log("SUBJECTS:", subjects);
     return (
       <div>
-        {subjects.map(subject => (
-          <Subject attendance={subject} />
+        {subjects.map((subject, i) => (
+          <Subject key={i} attendance={subject} />
         ))}
       </div>
     );

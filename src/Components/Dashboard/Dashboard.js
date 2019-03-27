@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 import { fetchStudents } from "../../actions/studentActions";
 import { connect } from "react-redux";
@@ -40,7 +40,6 @@ class Dashboard extends Component {
             alt="attendance history"
             size="massive"
             wrapped
-            fluid
           />
 
           <img src={BasicGraph} alt="BasicGraph" />

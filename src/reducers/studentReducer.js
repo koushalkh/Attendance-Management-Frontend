@@ -1,5 +1,5 @@
 const initialState = {
-  studentID: 1,
+  studentID: undefined,
   student: {}
 };
 
@@ -9,6 +9,15 @@ const studentReducer = (state = initialState, action) => {
       return {
         ...state,
         student: action.payload
+      };
+    case "SET_STUDENT_ID":
+      return {
+        ...state,
+        studentID: action.payload
+      };
+    case "LOGOUT_STUDENT":
+      return {
+        ...initialState
       };
     default:
       return state;

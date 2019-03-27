@@ -1,71 +1,94 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { login } from "../../actions/userActions";
 import "./Login.scss";
 import "./util.scss";
-export default class Login extends Component {
+export class Login extends Component {
   constructor(props) {
     super(props);
-    // this.onClick = this.onClick.bind(this);
+    this.onClick = this.onClick.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.state = {
+      username: "",
+      password: ""
+    };
   }
-  //   onClick(e) {
 
-  //   }
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  onClick(e) {
+    e.preventDefault();
+    this.props.login(this.state.username, this.state.password);
+  }
   render() {
+    if (this.props.type !== undefined) {
+      if (this.props.type === "student") {
+        return <Redirect to="/student" />;
+      } else if (this.props.type === "teacher") {
+        return <Redirect to="/teacher" />;
+      }
+    }
     return (
       <div>
-        <div class="limiter">
-          <div class="container-login100">
-            <div class="wrap-login100 p-t-50 p-b-90">
-              <form class="login100-form validate-form flex-sb flex-w">
-                <span class="login100-form-title p-b-51">Login</span>
+        <div className="limiter">
+          <div className="container-login100">
+            <div className="wrap-login100 p-t-50 p-b-90">
+              <form className="login100-form validate-form flex-sb flex-w">
+                <span className="login100-form-title p-b-51">Login</span>
 
                 <div
-                  class="wrap-input100 validate-input m-b-16"
+                  className="wrap-input100 validate-input m-b-16"
                   data-validate="Username is required"
                 >
                   <input
-                    class="input100"
+                    className="input100"
                     type="text"
                     name="username"
                     placeholder="Username"
+                    onChange={this.onChange}
                   />
-                  <span class="focus-input100" />
+                  <span className="focus-input100" />
                 </div>
 
                 <div
-                  class="wrap-input100 validate-input m-b-16"
+                  className="wrap-input100 validate-input m-b-16"
                   data-validate="Password is required"
                 >
                   <input
-                    class="input100"
+                    className="input100"
                     type="password"
-                    name="pass"
+                    name="password"
                     placeholder="Password"
+                    onChange={this.onChange}
                   />
-                  <span class="focus-input100" />
+                  <span className="focus-input100" />
                 </div>
 
-                <div class="flex-sb-m w-full p-t-3 p-b-24">
-                  <div class="contact100-form-checkbox">
+                <div className="flex-sb-m w-full p-t-3 p-b-24">
+                  <div className="contact100-form-checkbox">
                     <input
-                      class="input-checkbox100"
+                      className="input-checkbox100"
                       id="ckb1"
                       type="checkbox"
                       name="remember-me"
                     />
-                    <label class="label-checkbox100" for="ckb1">
+                    <label className="label-checkbox100" htmlFor="ckb1">
                       Remember me
                     </label>
                   </div>
 
                   <div>
-                    <div class="txt1">Forgot?</div>
+                    <div className="txt1">Forgot?</div>
                   </div>
                 </div>
 
-                <div class="container-login100-form-btn m-t-17">
+                <div className="container-login100-form-btn m-t-17">
                   <button
-                    class="login100-form-btn"
+                    className="login100-form-btn"
                     type="submit"
                     onClick={this.onClick}
                   >
@@ -80,3 +103,13 @@ export default class Login extends Component {
     );
   }
 }
+
+const mapStatesToProps = state => ({
+  type: state.user.type,
+  key: state.user.KEY
+});
+
+export default connect(
+  mapStatesToProps,
+  { login }
+)(Login);

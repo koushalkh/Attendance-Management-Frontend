@@ -18,7 +18,7 @@ class Dashboard extends Component {
   //     prop: PropTypes
   //   };
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchStudents();
   }
   render() {

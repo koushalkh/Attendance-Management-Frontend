@@ -5,6 +5,14 @@ import PropTypes from "prop-types";
 import { fetchStudents } from "../../actions/studentActions";
 import { connect } from "react-redux";
 
+import Sidebar from "../Sidebar/Sidebar";
+import History from "../../assets/history.png";
+import BasicGraph from "../../assets/basic_graph.png";
+import WeaklyAttendance from "../../assets/weakly_attendance.png";
+import { Image } from "semantic-ui-react";
+import "./Dashboard.scss";
+import SubjectList from "../SubjectList/SubjectList";
+
 class Dashboard extends Component {
   //   static propTypes = {
   //     prop: PropTypes
@@ -15,11 +23,31 @@ class Dashboard extends Component {
   }
   render() {
     const { studentID } = this.props;
-    console.log("rendered!!", studentID, new Date().getTime());
+    // console.log("rendered!!", studentID, new Date().getTime());
     if (!studentID) {
       return <div>loading...</div>;
     }
-    return <div>{studentID}</div>;
+    return (
+      <div className="dashboard-container">
+        <Sidebar />
+        <SubjectList
+          subjects={[["blue", "red"], ["blue", "green"], ["blue", "orange"]]}
+        />
+        <div className="graphs">
+          <Image
+            className="history"
+            src={History}
+            alt="attendance history"
+            size="massive"
+            wrapped
+            fluid
+          />
+
+          <img src={BasicGraph} alt="BasicGraph" />
+          <img src={WeaklyAttendance} alt="Weakly Attendance" />
+        </div>
+      </div>
+    );
   }
 }
 

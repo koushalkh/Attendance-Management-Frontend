@@ -5,6 +5,7 @@ import { Image } from "semantic-ui-react";
 import { fetchStudents } from "../../actions/studentActions";
 import Navbar from "../Navbar/Navbar";
 import "./Sidebar.scss";
+import GraProfile from "../../assets/person.jpeg";
 
 class Sidebar extends Component {
   static propTypes = {
@@ -26,7 +27,8 @@ class Sidebar extends Component {
         <Navbar />
         <div className="sidebar">
           <Image
-            src="https://react.semantic-ui.com/images/wireframe/square-image.png"
+            // src="https://react.semantic-ui.com/images/wireframe/square-image.png"
+            src={GraProfile}
             size="small"
             className="profile-image"
             circular

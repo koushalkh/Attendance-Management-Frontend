@@ -4,8 +4,10 @@ export const fetchStudents = () => dispatch => {
     payload: {
       username: "Madan",
       class: "6A",
-      email: "madan@mad.com",
-      phone: "807625412"
+      email: "madan@rnsit.ac.in",
+      phone: "807625412",
+      profile_url:
+        "https://react.semantic-ui.com/images/wireframe/square-image.png"
     }
   });
 };

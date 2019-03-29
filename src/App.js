@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Login from "./Components/Login/Login";
+import SubjectStats from "./Components/SubjectStats/SubjectStats";
 
 class App extends Component {
   render() {
@@ -19,7 +20,8 @@ class App extends Component {
             <div>
               <Route exact path="/" component={Login} />
               <Route path="/student" component={Dashboard} />
-              <Route path="/teacher" component={Dashboard} />
+              {/* <Route path="/teacher" component={Dashboard} /> */}
+              <Route path="/teacher" component={SubjectStats} />
             </div>
           </Router>
         </div>

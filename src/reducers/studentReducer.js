@@ -1,5 +1,6 @@
 const initialState = {
-  studentID: undefined,
+  // studentID: undefined,
+  studentID: 1,
   student: {}
 };
 

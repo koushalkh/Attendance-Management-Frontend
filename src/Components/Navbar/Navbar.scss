@@ -4,8 +4,8 @@
     justify-content: space-between;
     align-items: center;
     height: 3em;
-    background-color: #FFFFFF;
-    // background-color: #20232A;
+    // background-color: #FFFFFF;
+    background-color: #20232A;
     padding-left: 2em;
     padding-right: 2em;
     font-size: 1.5em;
@@ -16,11 +16,11 @@
 }
 
 .nav-bar>span {
-    // color: antiquewhite;
-    color: rgb(82, 180, 208);
+    color: antiquewhite;
+    // color: rgb(82, 180, 208);
     font-family: sniglet;
 }
 
-// .logout {
-//     color: white;
-// }
+.logout {
+    color: white;
+}

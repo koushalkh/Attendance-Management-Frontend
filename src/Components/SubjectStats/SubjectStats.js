@@ -152,7 +152,7 @@ export default class SubjectStats extends Component {
 
   onClick = size => () => {
     console.log("logged");
-    this.setState({ size, open: true });
+    this.setState({ open: true });
   };
   close = () => this.setState({ open: false });
 
@@ -175,13 +175,13 @@ export default class SubjectStats extends Component {
     }
   }
   render() {
-    const { size, open } = this.state;
-    console.log(sample_data);
+    const { open } = this.state;
+    // console.log(sample_data);
     if (this.state.open) {
       // return <AttandanceModal size={this.state.size} open={this.state.open} />;
       return (
         <div>
-          <Modal size={size} open={open} onClose={this.close}>
+          <Modal open={open} onClose={this.close} dimmer="blurring">
             <Modal.Header>Raise Query</Modal.Header>
             <Modal.Content>
               <p>
@@ -191,36 +191,53 @@ export default class SubjectStats extends Component {
               </p>
             </Modal.Content>
             <Modal.Actions>
-              <Button negative onClick={this.close}>
+              <Button positive onClick={this.close}>
                 Cancel
               </Button>
-              <Button
-                positive
-                icon="checkmark"
-                labelPosition="right"
-                content="Raise Query"
-                onClick={this.close}
-              />
+              <Button animated="fade" onClick={this.close} negative>
+                <Button.Content visible>
+                  Click here if marked absent
+                </Button.Content>
+                <Button.Content hidden>Raise Query</Button.Content>
+              </Button>
             </Modal.Actions>
           </Modal>
         </div>
       );
     }
     return (
-      <div className="stats-container">
-        {sample_data["attendance"].map(subject => (
-          <div className="subject">
-            <span>{subject[0]}</span>
-            {subject[1].map(att => (
-              <div
-                className="attendance"
-                onClick={this.onClick(att)}
-                style={this.getStyle(att)}
-              />
-            ))}
-          </div>
-        ))}
-      </div>
+      <React.Fragment>
+        <div className="stats-container">
+          {sample_data["attendance"].map((subject, i) => (
+            <div className="subject" key={i}>
+              <span>{subject[0]}</span>
+              {subject[1].map((att, index) => (
+                <div
+                  key={index}
+                  className="attendance"
+                  onClick={this.onClick(att)}
+                  style={this.getStyle(att)}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+        <div className="stats-container-mobile">
+          {sample_data["attendance"].map((subject, i) => (
+            <div className="subject" key={i}>
+              <span>{subject[0]}</span>
+              {subject[1].slice(-7).map((att, index) => (
+                <div
+                  className="attendance"
+                  key={index}
+                  onClick={this.onClick(att)}
+                  style={this.getStyle(att)}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+      </React.Fragment>
     );
   }
 }

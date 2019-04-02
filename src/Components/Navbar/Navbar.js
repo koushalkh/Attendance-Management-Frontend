@@ -16,7 +16,9 @@ class Navbar extends Component {
   render() {
     return (
       <div className="nav-bar">
-        <Icon name="book" color="grey" />
+        <div className="Navicon">
+          <Icon name="book" color="grey" />
+        </div>
         <span>Attendance Management System</span>
         <button className="logout" onClick={this.onLogout}>
           Logout

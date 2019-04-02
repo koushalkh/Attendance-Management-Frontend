@@ -10,7 +10,7 @@ import Sidebar from "../Sidebar/Sidebar";
 import BasicGraph from "../../assets/basic_graph.png";
 import WeaklyAttendance from "../../assets/weakly_attendance.png";
 // import { Image } from "semantic-ui-react";
-import "./Dashboard.scss";
+import "./StudentDashboard.scss";
 // import SubjectList from "../SubjectList/SubjectList";
 import SubjectStats from "../SubjectStats/SubjectStats";
 
@@ -38,12 +38,12 @@ class Dashboard extends Component {
         <SubjectStats />
         <div className="graphs">
           {/* <Image
-            className="history"
-            src={History}
-            alt="attendance history"
-            size="massive"
-            wrapped
-          /> */}
+              className="history"
+              src={History}
+              alt="attendance history"
+              size="massive"
+              wrapped
+            /> */}
 
           <img src={BasicGraph} alt="BasicGraph" />
           <img src={WeaklyAttendance} alt="Weakly Attendance" />

@@ -1,0 +1,40 @@
+.sidebar {
+    width: 20%;
+    background-color: #20232A;
+    // background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    float: left;
+    position: fixed;
+    color: #fff;
+    // color: black;
+    // z-index: 1;
+    top: 4em;
+    left: 0;
+    overflow-x: hidden;
+}
+
+.profile-image {
+    width: 80%;
+    height: 80%;
+    margin-top: 2em;
+
+}
+
+.user-details {
+    text-align: center;
+
+}
+
+.user-details>div {
+    margin-top: 2em;
+}
+
+@media screen and (max-width:700px) {
+    .sidebar {
+        display: none;
+    }
+}

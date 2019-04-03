@@ -1,0 +1,45 @@
+.dashboard-container {
+    position: relative;
+    text-align: left;
+    margin-left: 20%;
+    margin-top: 4em;
+    background-color: #F3F4F8;
+    height: 100vh;
+}
+
+.graphs {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.graphs>.history {
+    grid-column: 1 / span 2;
+    width: 100%;
+    align-self: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+.graphs>img {
+    padding: 1.5em;
+
+}
+
+@media only screen and (max-width:700px) {
+    .dashboard-container {
+        margin: 8px;
+        margin-top: 5em;
+    }
+
+    .graphs {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .graphs>img {
+        padding: 1.5em;
+        max-width: 100%;
+    }
+}

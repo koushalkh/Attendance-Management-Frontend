@@ -177,36 +177,38 @@ export default class SubjectStats extends Component {
   render() {
     const { open } = this.state;
     // console.log(sample_data);
-    if (this.state.open) {
-      // return <AttandanceModal size={this.state.size} open={this.state.open} />;
-      return (
-        <div>
-          <Modal open={open} onClose={this.close} dimmer="blurring">
-            <Modal.Header>Raise Query</Modal.Header>
-            <Modal.Content>
-              <p>
-                If you are present on this day and is marked absent, please
-                raise a query, we will make sure our algorithm recognizes you
-                better,
-              </p>
-            </Modal.Content>
-            <Modal.Actions>
-              <Button positive onClick={this.close}>
-                Cancel
-              </Button>
-              <Button animated="fade" onClick={this.close} negative>
-                <Button.Content visible>
-                  Click here if marked absent
-                </Button.Content>
-                <Button.Content hidden>Raise Query</Button.Content>
-              </Button>
-            </Modal.Actions>
-          </Modal>
-        </div>
-      );
-    }
     return (
       <React.Fragment>
+        {open && (
+          <div>
+            <Modal
+              open={open}
+              onClose={this.close}
+              size="tiny"
+              dimmer="blurring"
+            >
+              <Modal.Header>Raise Query</Modal.Header>
+              <Modal.Content>
+                <p>
+                  If you are present on this day and is marked absent, please
+                  raise a query, we will make sure our algorithm recognizes you
+                  better,
+                </p>
+              </Modal.Content>
+              <Modal.Actions>
+                <Button positive onClick={this.close}>
+                  Cancel
+                </Button>
+                <Button animated="fade" onClick={this.close} negative>
+                  <Button.Content visible>
+                    Click here if marked absent
+                  </Button.Content>
+                  <Button.Content hidden>Raise Query</Button.Content>
+                </Button>
+              </Modal.Actions>
+            </Modal>
+          </div>
+        )}
         <div className="stats-container">
           {sample_data["attendance"].map((subject, i) => (
             <div className="subject" key={i}>

@@ -1,0 +1,21 @@
+.teacher-content-container {
+    font-family: sniglet;
+}
+
+.time-column {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+}
+
+.past-column {
+    display: grid;
+    // grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(25px, 1fr));
+    text-align: center;
+}
+
+.mini-container {
+    border-bottom: 4px solid white;
+    border-top: 4px solid white;
+}

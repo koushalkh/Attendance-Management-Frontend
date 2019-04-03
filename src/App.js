@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 import StudentDashboard from "./Components/StudentDashboard/StudentDashboard";
 import Login from "./Components/Login/Login";
-import SubjectStats from "./Components/SubjectStats/SubjectStats";
+// import SubjectStats from "./Components/SubjectStats/SubjectStats";
 import TeacherDashboard from "./Components/TeacherDashboard/TeacherDashboard";
 
 class App extends Component {

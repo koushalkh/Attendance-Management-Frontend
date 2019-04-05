@@ -20,7 +20,7 @@ export default class TeacherDashboard extends Component {
   closeTakeAttandance = () => this.setState({ takeAttandance: false });
   onTakeAttandance = event => {
     toast({
-      type: "warning",
+      type: "info",
       icon: "camera",
       title: "SUCESS!!",
       description: "Triggered attandance taking system",

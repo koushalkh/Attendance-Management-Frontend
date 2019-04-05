@@ -1,6 +1,7 @@
 const initialState = {
   type: undefined,
-  KEY: undefined
+  token: undefined,
+  id: undefined
 };
 
 const userReducer = (state = initialState, action) => {
@@ -9,7 +10,8 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         type: action.payload["type"],
-        KEY: action.payload["KEY"]
+        token: action.payload["token"],
+        id: action.payload["id"]
       };
     case "LOGOUT_USER":
       return {

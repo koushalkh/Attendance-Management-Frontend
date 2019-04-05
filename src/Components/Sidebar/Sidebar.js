@@ -9,8 +9,8 @@ import GraProfile from "../../assets/person.jpeg";
 
 class Sidebar extends Component {
   static propTypes = {
-    student: PropTypes.object,
-    fetchStudents: PropTypes.func
+    user: PropTypes.object,
+    fetchUser: PropTypes.func
   };
 
   componentDidMount() {
@@ -54,7 +54,12 @@ class Sidebar extends Component {
 }
 
 const mapStatesToProps = state => ({
-  student: state.student.student
+  user:
+    state.user.type === "student"
+      ? state.student.student
+      : state.user.type === "teacher"
+      ? state.teacher.teacher
+      : state.manager.manager
 });
 
 export default connect(

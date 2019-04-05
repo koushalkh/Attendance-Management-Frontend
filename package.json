@@ -2,6 +2,7 @@
   "name": "attendance-management-frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://http://127.0.0.1:8000",
   "dependencies": {
     "formik": "^1.5.1",
     "jshint": "^2.10.2",

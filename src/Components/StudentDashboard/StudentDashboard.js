@@ -13,20 +13,34 @@ import WeaklyAttendance from "../../assets/weakly_attendance.png";
 import "./StudentDashboard.scss";
 // import SubjectList from "../SubjectList/SubjectList";
 import SubjectStats from "../SubjectStats/SubjectStats";
+import Loading from "../Loading/Loading";
 
 class Dashboard extends Component {
   //   static propTypes = {
   //     prop: PropTypes
   //   };
+  constructor(props) {
+    super(props);
+    this.state = { imageStatus: "loading" };
+  }
 
   componentWillMount() {
     this.props.fetchStudents();
   }
+
+  handleImageLoaded() {
+    this.setState({ imageStatus: "loaded" });
+  }
+
+  handleImageErrored() {
+    this.setState({ imageStatus: "failed to load" });
+  }
+
   render() {
     const { studentID } = this.props;
     // console.log("rendered!!", studentID, new Date().getTime());
     if (!studentID) {
-      return <div>loading...</div>;
+      return <Loading />;
     }
     return (
       <div className="dashboard-container">
@@ -45,8 +59,18 @@ class Dashboard extends Component {
               wrapped
             /> */}
 
-          <img src={BasicGraph} alt="BasicGraph" />
-          <img src={WeaklyAttendance} alt="Weakly Attendance" />
+          <img
+            src={BasicGraph}
+            alt="BasicGraph"
+            onLoad={this.handleImageLoaded.bind(this)}
+            onError={this.handleImageErrored.bind(this)}
+          />
+          <img
+            src={WeaklyAttendance}
+            alt="Weakly Attendance"
+            onLoad={this.handleImageLoaded.bind(this)}
+            onError={this.handleImageErrored.bind(this)}
+          />
         </div>
       </div>
     );
@@ -54,7 +78,7 @@ class Dashboard extends Component {
 }
 
 const mapStatesToProps = state => ({
-  studentID: state.student.studentID
+  studentID: state.user.id
 });
 
 export default connect(

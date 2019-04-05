@@ -1,20 +1,25 @@
-export const login = post => dispatch => {
-  let type = "student";
-  let id = 10;
-  dispatch({
-    type: "LOGIN",
-    payload: {
-      type: type, //TODO: change this based on result
-      KEY: "SDKJCBA63IADJBDS7336A"
-    }
-  });
+import { LOGIN_API_ENDPOINT } from "../backend";
 
-  if (type === "student") {
-    dispatch({
-      type: "SET_STUDENT_ID",
-      payload: id
+export const login = (username, password) => dispatch => {
+  console.log(JSON.stringify({ username: username, password: password }));
+  fetch(LOGIN_API_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({ username: username, password: password })
+  })
+    .then(res => res.json())
+    .then(result => {
+      dispatch({
+        type: "LOGIN",
+        payload: {
+          type: result.type,
+          token: result.token,
+          id: username
+        }
+      });
     });
-  }
 };
 
 export const logout = post => dispatch => {
